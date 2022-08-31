@@ -24,15 +24,36 @@ window.addEventListener('load', () => {
         SIDEBAR.classList.toggle('sidebar-hidden');
     };
 
+    const getValueByPercent = (config, { offset = 0, fromTop = true }) => {
+        if (!config) {
+            return;
+        }
+
+        const { y, height } = config;
+        const scrollValue = fromTop ? window.scrollY : window.scrollY + window.innerHeight;
+        const isBlockActive = scrollValue > y && scrollValue < y + height;
+        const percent = (height - offset) / 100;
+        const coverage = (scrollValue - y) / percent;
+        const getValue = ({ min = 0, max = 1 }) =>
+          min > 0 ? 1 + coverage * (max / 100) : coverage * (max / 100);
+        const getNewValue = ({ min = 0, max = 1 }) =>
+          getValue({ min, max }) > max ? max : getValue({ min, max });
+
+        return [isBlockActive, getNewValue];
+    };
+
     // <!-- Listeners  -->
     window.addEventListener('scroll', () => {
-        const { y, height } = welcomeBlockRect;
-        const isWelcomeSquare = window.scrollY > y + height;
+        const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { offset: 200 });
 
-        if (!isWelcomeSquare) {
-            // TODO: Дописать ротейт для прямоуг вначале!
-            //WELCOME_SQUARE.style.transform = 'scale(2, 2) rotate(-90deg)';
+        if (isWelcomeBlock) {
+            const newScale = getWelcomeValue({ min: 1, max: 2 });
+            const newRotate = getWelcomeValue({ max: 90 });
+            WELCOME_SQUARE.style.transform =  `scale(${newScale}, ${newScale}) rotate(-${newRotate}deg)`;
+        } else {
+            WELCOME_SQUARE.style.transform = `scale(1, 1) rotate(0deg)`;
         }
+
     }, { capture: true });
 
     WELCOME_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) => {

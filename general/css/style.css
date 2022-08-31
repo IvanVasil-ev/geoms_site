@@ -184,17 +184,17 @@ main {
 
 .gallery .photos {
     display: flex;
-    max-width: 1508px;
     margin: 0 auto;
-    height: 100%;
+    height: auto;
     width: 100%;
     flex-wrap: wrap;
     max-height: 564px;
+    padding: 0 40px;
 }
 
 .gallery .photos img {
-    width: 377px;
-    height: 282px;
+    width: calc(100% / 4);
+    height: auto;
     transition: 150ms;
 }
 
@@ -203,9 +203,6 @@ main {
     position: relative;
     transform: scale(1.04);
     -ms-transform: scale(1.04);
-    -moz-transform: scale(1.04);
-    -webkit-transform: scale(1.04);
-    -o-transform: scale(1.04);
     box-shadow: 0 2px 20px 2px rgb(0 0 0 / 45%)
 }
 
