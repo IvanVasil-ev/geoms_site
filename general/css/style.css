@@ -124,8 +124,8 @@ section .resize {
 
 .welcome__img-float {
     width: 45px;
-    top: calc(40% - 65px / 2);
-    left: 65%;
+    top: calc(60% - 65px / 2);
+    left: 75%;
     z-index: 13;
 }
 

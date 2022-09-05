@@ -31,34 +31,32 @@ window.addEventListener('load', () => {
         SIDEBAR.classList.toggle('sidebar-hidden');
     };
 
-    const getValueByPercent = (config, { offset = 0, fromTop = true, endTop = true }) => {
-        // TODO: Необходимо переписать логику и добавить возможность отслеживания вхождения компонента в экран
+    const getValueByPercent = (config, { offset = 0, startFromTop = true }) => {
         if (!config) {
             return;
         }
 
         const { y, height } = config;
+        const elementHeight = y + height;
         const scrollTopValue = window.scrollY;
         const scrollBotValue = window.scrollY + window.innerHeight;
-        const isBlockVisible = scrollTopValue < (y + height) || scrollBotValue < y;
-
-
-
-        const isBlockActive = scrollValue > y && scrollValue < y + height;
-        const percent = (height - offset) / 100;
-        const coverage = (scrollValue - y) / percent;
+        const isBlockVisible = scrollTopValue < elementHeight && scrollBotValue > y;
+        const percent = (height + offset + startFromTop ? window.innerHeight : 0) / 100;
+        const fullHeight = startFromTop ? scrollBotValue : scrollTopValue;
+        const coverage = (fullHeight - y) / percent;
         const getValue = ({ min = 0, max = 1 }) =>
           min > 0 ? 1 + coverage * (max / 100) : coverage * (max / 100);
+
         const getNewValue = ({ min = 0, max = 1 }) =>
           getValue({ min, max }) > max ? max : getValue({ min, max });
 
-        return [isBlockActive, getNewValue];
+        return [isBlockVisible, getNewValue];
     };
 
     // <!-- Listeners  -->
     window.addEventListener('scroll', () => {
-        const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, {});
-        const [isAboutBlock, getAboutValue] = getValueByPercent(aboutBlockRect, { fromTop: false, endTop: false });
+        const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { startFromTop: false });
+        const [isAboutBlock, getAboutValue] = getValueByPercent(aboutBlockRect, {});
 
         if (isWelcomeBlock) {
             const newScale = getWelcomeValue({ min: 1, max: 2 });
