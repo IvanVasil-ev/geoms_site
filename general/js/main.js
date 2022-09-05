@@ -41,6 +41,9 @@ window.addEventListener('load', () => {
         const scrollTopValue = window.scrollY;
         const scrollBotValue = window.scrollY + window.innerHeight;
         const isBlockVisible = scrollTopValue < (y + height) || scrollBotValue < y;
+
+
+
         const isBlockActive = scrollValue > y && scrollValue < y + height;
         const percent = (height - offset) / 100;
         const coverage = (scrollValue - y) / percent;
