@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru" id="html">
 <head>
   <meta charset="UTF-8">
@@ -12,60 +12,71 @@
   <main id="main" class="main_opacity">
     <!-- Welcome -->
     <section class="welcome" id="welcome">
-      <img class="img-circle" src="./assets/block-1_circle.png" alt="circle">
-      <div class="text-wrapper">
-        <p>
-          COMPUTER- GENERATED IMAGERY
-        </p>
-        <img class="img-square" id="welcome-square" src="./assets/block-1_square.png" alt="square">
-        <img class="img-circle-2" src="./assets/block-1_circle-2.svg" alt="circle-2">
-        <img class="img-circle-3" src="./assets/block-1_circle-2.svg" alt="circle-2">
+      <div class="resize">
+        <img class="welcome__img-circle" src="./assets/block-1_circle.png" alt="circle">
+        <div class="welcome__text-wrapper">
+          <p>
+            COMPUTER- GENERATED IMAGERY
+          </p>
+          <img class="welcome__img-square" id="welcome-square" src="./assets/block-1_square.png" alt="square">
+          <img class="welcome__img-circle-2" src="./assets/block-1_circle-2.svg" alt="circle-2">
+          <img class="welcome__img-circle-3" src="./assets/block-1_circle-2.svg" alt="circle-2">
+        </div>
+        <img class="welcome__img-float" id="welcome-float" src="./assets/block-1_float.png" alt="float">
       </div>
-      <img class="img-float" id="welcome-float" src="./assets/block-1_float.png" alt="float">
     </section>
 
     <!-- About -->
-    <section class="about">
-      <div class="text-wrapper">
-        <img class="img-line" src="./assets/block-2_line.png" alt="line">
-        <img class="img-manifest" src="./assets/block-2_manifest.png" alt="manifest">
-        <p class="who">
-          Кто&nbsp;мы
-        </p>
-        <p class="about-us">
-          "Визуальная составляющая должна быть во
-          <br>главе угла, образы медленнее выветриваются из
-          <br>головы и лучше доносят смысл. И в век
-          <br>пресыщения информацией, мы любим получать
-          <br>ее быстро, доходчиво и красочно".
-        </p>
-        <img class="img-line-2" src="./assets/block-2_line-2.png" alt="line">
+    <section class="about" id="about">
+      <div class="resize">
+        <div class="about__text-wrapper">
+          <img class="about__img-line" src="./assets/block-2_line.png" alt="line">
+          <img class="about__img-manifest" src="./assets/block-2_manifest.png" alt="manifest">
+          <p class="about__who" id="about__who">
+            Кто&nbsp;мы
+          </p>
+          <p class="about__about-us">
+            "Визуальная составляющая должна быть во
+            <br>главе угла, образы медленнее выветриваются из
+            <br>головы и лучше доносят смысл. И в век
+            <br>пресыщения информацией, мы любим получать
+            <br>ее быстро, доходчиво и красочно".
+          </p>
+          <img class="about__img-line-2" src="./assets/block-2_line-2.png" alt="line">
+        </div>
       </div>
     </section>
 
+    <!-- Portfolio Marquee  -->
+    <section class="portfolio-marquee">
+
+    </section>
+
     <!-- Gallery -->
-    <div class="gallery">
-      <div class="photos">
-        <img src="./assets/block-3_image-1.jpg" alt="">
-        <img src="./assets/block-3_image-2.jpg" alt="">
-        <img src="./assets/block-3_image-3.jpg" alt="">
-        <img src="./assets/block-3_image-4.jpg" alt="">
-        <img src="./assets/block-3_image-5.jpg" alt="">
-        <img src="./assets/block-3_image-6.jpg" alt="">
-        <img src="./assets/block-3_image-7.jpg" alt="">
-        <img src="./assets/block-3_image-8.jpg" alt="">
+    <section class="gallery">
+      <div class="resize">
+        <div class="gallery__photos">
+          <img src="./assets/block-3_image-1.jpg" alt="">
+          <img src="./assets/block-3_image-2.jpg" alt="">
+          <img src="./assets/block-3_image-3.jpg" alt="">
+          <img src="./assets/block-3_image-4.jpg" alt="">
+          <img src="./assets/block-3_image-5.jpg" alt="">
+          <img src="./assets/block-3_image-6.jpg" alt="">
+          <img src="./assets/block-3_image-7.jpg" alt="">
+          <img src="./assets/block-3_image-8.jpg" alt="">
+        </div>
+        <div class="gallery__photos">
+          <img src="./assets/block-3_image-1.jpg" alt="">
+          <img src="./assets/block-3_image-2.jpg" alt="">
+          <img src="./assets/block-3_image-3.jpg" alt="">
+          <img src="./assets/block-3_image-4.jpg" alt="">
+          <img src="./assets/block-3_image-5.jpg" alt="">
+          <img src="./assets/block-3_image-6.jpg" alt="">
+          <img src="./assets/block-3_image-7.jpg" alt="">
+          <img src="./assets/block-3_image-8.jpg" alt="">
+        </div>
       </div>
-      <div class="photos">
-        <img src="./assets/block-3_image-1.jpg" alt="">
-        <img src="./assets/block-3_image-2.jpg" alt="">
-        <img src="./assets/block-3_image-3.jpg" alt="">
-        <img src="./assets/block-3_image-4.jpg" alt="">
-        <img src="./assets/block-3_image-5.jpg" alt="">
-        <img src="./assets/block-3_image-6.jpg" alt="">
-        <img src="./assets/block-3_image-7.jpg" alt="">
-        <img src="./assets/block-3_image-8.jpg" alt="">
-      </div>
-    </div>
+    </section>
 
     <!-- Marquee -->
     <section class="contact-marquee">
@@ -74,14 +85,16 @@
 
     <!-- Story -->
     <section class="story">
-      <em>Story</em>
-      <p>
-        <em>MORE</em>
-        THAN 50 SUCCESSFULLY COMPLETED
-        <em>PROJECTS</em>.
-        10&nbsp;000 HOURS&nbsp;OF <em>WORKING</em> TIME
-      </p>
-      <img src="./assets/block-4_line.svg" alt="line">
+      <div class="resize">
+        <em>Story</em>
+        <p>
+          <em>MORE</em>
+          THAN 50 SUCCESSFULLY COMPLETED
+          <em>PROJECTS</em>.
+          10&nbsp;000 HOURS&nbsp;OF <em>WORKING</em> TIME
+        </p>
+        <img src="./assets/block-4_line.svg" alt="line">
+      </div>
     </section>
 
     <!-- Free Space -->
@@ -89,20 +102,30 @@
 
     <!-- Why -->
     <section class="why">
-      <img src="./assets/block-6.png" alt="line">
-      <p>Почему мы?</p>
+      <div class="resize">
+        <img src="./assets/block-6.png" alt="line">
+        <p>Почему мы?</p>
+      </div>
     </section>
 
     <!-- Footer -->
     <section class="footer">
-      <div class="text-wrapper">
-        <div class="divider"></div>
-        <p>Будем рады сотрудничеству и&nbsp;новым&nbsp;друзьям<em>!</em></p>
+      <div class="resize">
+        <div class="footer__text-wrapper">
+          <div class="footer__divider"></div>
+          <p>Будем рады сотрудничеству и&nbsp;новым&nbsp;друзьям<em>!</em></p>
+        </div>
       </div>
-      <div class="marquee">
+    </section>
 
+    <section class="email__marquee">
+
+    </section>
+
+    <section class="year">
+      <div class="resize">
+        <em>©2022</em>
       </div>
-      <em>©2022</em>
     </section>
 
 

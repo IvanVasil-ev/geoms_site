@@ -15,9 +15,9 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     border: none;
     outline: none;
+    box-sizing: border-box;
     font-family: var(--font-family);
 }
 
@@ -25,6 +25,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     position: relative;
 }
 
@@ -50,24 +51,32 @@ main {
     opacity: 1;
 }
 
-/* <!-- Block 1 --> */
+section .resize {
+    height: 100%;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+/* <!-- Welcome --> */
 .welcome {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     overflow: hidden;
 }
 
-.welcome .text-wrapper {
+.welcome__text-wrapper {
     user-select: none;
     max-width: 745px;
     position: relative;
     width: 100%;
 }
 
-.welcome .text-wrapper p {
+.welcome__text-wrapper p {
     width: 100%;
     font-size: 135px;
     color: var(--color-red);
@@ -78,23 +87,23 @@ main {
     margin-bottom: 95px;
 }
 
-.welcome .img-circle,
-.welcome .text-wrapper .img-circle-2,
-.welcome .text-wrapper .img-circle-3,
-.welcome .text-wrapper .img-square,
-.welcome .img-float {
+.welcome__img-circle,
+.welcome__img-circle-2,
+.welcome__img-circle-3,
+.welcome__img-square,
+.welcome__img-float {
     position: absolute;
 }
 
-.welcome .img-circle {
+.welcome__img-circle {
     top: calc(50% - 725px / 2);
     left: calc(40% - 725px / 2);
     z-index: 11;
     width: 725px;
     animation: rotate 10s infinite linear;
 }
-.welcome .text-wrapper .img-circle-2,
-.welcome .text-wrapper .img-circle-3 {
+.welcome__img-circle-2,
+.welcome__img-circle-3 {
     z-index: 13;
     width: 376px;
     right: -20%;
@@ -102,18 +111,18 @@ main {
     animation: rotate 20s infinite linear;
 }
 
-.welcome .text-wrapper .img-circle-2 {
+.welcome__img-circle-2 {
     bottom: -20%;
 }
 
-.welcome .text-wrapper .img-square {
+.welcome__img-square {
     z-index: 13;
     width: 215px;
     top: -20%;
     left: -215px;
 }
 
-.welcome .img-float {
+.welcome__img-float {
     width: 45px;
     top: calc(40% - 65px / 2);
     left: 65%;
@@ -122,12 +131,11 @@ main {
 
 /* <!-- About --> */
 .about {
-    max-height: 555px;
+    max-height: 445px;
     height: 100%;
-    padding-top: 60px;
 }
 
-.about .text-wrapper {
+.about__text-wrapper {
     position: relative;
     display: flex;
     margin: 0 auto;
@@ -135,19 +143,19 @@ main {
     max-width: 1000px;
 }
 
-.about .text-wrapper .img-line,
-.about .text-wrapper .img-line-2,
-.about .text-wrapper .img-manifest {
+.about__img-line,
+.about__img-line-2,
+.about__img-manifest {
     position: absolute;
 }
 
-.about .text-wrapper .img-line {
+.about__img-line {
     max-width: 888px;
     top: -230px;
     left: -100px
 }
 
-.about .text-wrapper .img-line-2 {
+.about__img-line-2 {
     max-width: 499px;
     left: 55%;
     top: 115px;
@@ -155,20 +163,20 @@ main {
     animation: rotate 30s infinite linear;
 }
 
-.about .text-wrapper .img-manifest {
+.about__img-manifest {
     transform: rotate(15deg);
     max-width: 482px;
     top: -125px;
     left: 600px;
 }
 
-.about .text-wrapper .who {
+.about__who {
     font-size: 96px;
     flex: 1;
     position: relative;
 }
 
-.about .text-wrapper .about-us {
+.about__about-us {
     text-transform: uppercase;
     text-align: right;
     line-height: 1.6;
@@ -176,13 +184,19 @@ main {
     position: relative;
 }
 
+/* <!-- Portfolio Marquee  --> */
+.portfolio-marquee {
+    height: 100%;
+    max-height: 110px;
+    padding-top: 15px;
+}
+
 /* <!-- Gallery --> */
 .gallery {
-    max-height: 1128px;
     background-color: var(--color-red);
 }
 
-.gallery .photos {
+.gallery__photos {
     display: flex;
     margin: 0 auto;
     height: auto;
@@ -192,13 +206,12 @@ main {
     padding: 0 40px;
 }
 
-.gallery .photos img {
+.gallery__photos img {
     width: calc(100% / 4);
-    height: auto;
     transition: 150ms;
 }
 
-.gallery .photos img:hover {
+.gallery__photos img:hover {
     cursor: zoom-in;
     position: relative;
     transform: scale(1.04);
@@ -215,16 +228,12 @@ main {
 
 /* <!-- Story  --> */
 .story {
-    position: relative;
     height: 100%;
     max-height: 615px;
     padding-bottom: 45px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
 }
 
-.story > em {
+.story > * > em {
     font-size: 16px;
     opacity: 0.6;
 }
@@ -241,6 +250,7 @@ main {
     max-width: 1193px;
     margin: 0 auto;
     line-height: 1;
+    text-align: center;
 }
 
 /* <!-- Free Space --> */
@@ -274,7 +284,7 @@ main {
     max-width: 973px;
 }
 
-.why > p {
+.why p {
     position: relative;
     max-width: 1080px;
     margin: 0 auto;
@@ -285,44 +295,43 @@ main {
 
 /* <!-- Footer -->  */
 .footer {
-    height: 100%;
-    max-height: 539px;
-    padding: 30px 0 15px;
-    max-width: 1170px;
-    margin: 0 auto;
+    padding-top: 30px;
 }
 
-.footer .text-wrapper {
-    width: 100%;
+.footer__text-wrapper {
     max-width: 1170px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-.footer .text-wrapper .divider {
+.footer__divider {
     height: 1px;
     width: calc(100% - 35px);
     margin: 0 auto;
     background: var(--color-black);
 }
 
-.footer .text-wrapper > p {
+.footer__text-wrapper > p {
     width: 100%;
     max-width: 1025px;
     text-transform: uppercase;
     font-size: 66px;
 }
 
-.footer .marquee {
+.email__marquee {
     height: 100%;
     max-height: 245px;
     padding: 60px 0 90px;
 }
 
+.year {
+    padding-bottom: 15px;
+}
+
 /* <!-- Float Button --> */
 .float_button {
-    top: 20px;
+    top: 40px;
     right: 40px;
     width: 48px;
     height: 48px;
@@ -351,7 +360,6 @@ main {
     transition: 700ms;
     user-select: none;
     justify-content: flex-end;
-    /*background-color: var(--color-sidebar-background);*/
 }
 
 .sidebar-hidden {
@@ -400,4 +408,15 @@ main {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+}
+
+@media (max-width: 960px) {
+    .free-space {
+        display: none;
+    }
+
+
+    .sidebar .menu {
+        width: 100vw;
+    }
 }
