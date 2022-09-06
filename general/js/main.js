@@ -44,8 +44,9 @@ window.addEventListener('load', () => {
         const percent = (height + offset + startFromTop ? window.innerHeight : 0) / 100;
         const fullHeight = startFromTop ? scrollBotValue : scrollTopValue;
         const coverage = (fullHeight - y) / percent;
+        const minMaxCoverage = coverage >= 100 ? 100 : coverage <= 0 ? 0 : coverage;
         const getValue = ({ min = 0, max = 1 }) =>
-          min > 0 ? 1 + coverage * (max / 100) : coverage * (max / 100);
+          min > 0 ? 1 + minMaxCoverage * (max / 100) : minMaxCoverage * (max / 100);
 
         const getNewValue = ({ min = 0, max = 1 }) =>
           getValue({ min, max }) > max ? max : getValue({ min, max });
