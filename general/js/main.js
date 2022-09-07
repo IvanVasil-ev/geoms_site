@@ -17,6 +17,9 @@ window.addEventListener('load', () => {
     const ABOUT_BLOCK = document.getElementById('about');
     const ABOUT_WHO = document.getElementById('about__who');
 
+    const FOOTER_BLOCK = document.getElementById('footer')
+    const FOOTER_FLOAT = document.getElementById('footer-float');
+
     // <!-- Onload  -->
     MAIN_BLOCK.classList.add('main_opacity_visible');
 
@@ -24,6 +27,7 @@ window.addEventListener('load', () => {
     const welcomeBlockRect = WELCOME_BLOCK.getBoundingClientRect();
     const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
+    // const footerFloatRect = FOOTER_FLOAT.getBoundingClientRect();
 
     // <!-- Functions  -->
     const toggleSidebar = () => {
@@ -77,9 +81,14 @@ window.addEventListener('load', () => {
     }, { capture: true });
 
     WELCOME_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) => {
-        const { x, y } = welcomeFloatRect;
+        const { y, x } = welcomeFloatRect;
         WELCOME_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
     });
+
+    // FOOTER_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) => {
+    //     const { x, y } = footerFloatRect;
+    //     FOOTER_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
+    // });
 
     FLOAT_BUTTON.addEventListener('click', () => toggleSidebar());
     SIDEBAR_CLOSE.addEventListener('click', () => toggleSidebar());
