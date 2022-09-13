@@ -3,6 +3,7 @@
     --color-black: #000000;
     --color-red: #cc2929;
     --color-sidebar-background: #00000010;
+    --color-green: #9dfc03;
     --font-family: 'Arial', Arial, sans-serif;
 }
 
@@ -10,6 +11,11 @@
 @keyframes rotate {
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0%) }
+    100% { transform: translateX(-100%) }
 }
 
 * {
@@ -53,6 +59,10 @@ main {
 
 .main_opacity_visible {
     opacity: 1;
+}
+
+section {
+    max-height: 1080px;
 }
 
 section .resize {
@@ -199,13 +209,6 @@ section .resize {
     position: relative;
 }
 
-/* <!-- Portfolio Marquee  --> */
-.portfolio-marquee {
-    height: 100%;
-    max-height: 110px;
-    padding-top: 15px;
-}
-
 /* <!-- Gallery --> */
 .gallery {
     background-color: var(--color-red);
@@ -234,18 +237,24 @@ section .resize {
     box-shadow: 0 2px 20px 2px rgb(0 0 0 / 45%)
 }
 
-/* <!-- Marquee --> */
 .contact-marquee {
-    height: 100%;
-    max-height: 201px;
-    padding: 30px 0;
+    max-height: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.green-sphere {
+    color: #9dfc03;
+    margin: 0 20px;
 }
 
 /* <!-- Story  --> */
 .story {
     height: 100%;
     max-height: 615px;
-    padding-bottom: 45px;
+    padding-bottom: 110px;
 }
 
 .story > * > em {
@@ -389,11 +398,6 @@ section .resize {
     width: 287px;
 }
 
-.email__marquee {
-    height: 245px;
-    padding: 60px 0 90px;
-}
-
 .year {
     padding-bottom: 15px;
 }
@@ -402,6 +406,92 @@ section .resize {
     font-size: 16px;
     width: 100%;
     max-width: 1170px;
+}
+
+/* <!-- Default Marquee --> */
+.marquee {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.marquee .inner {
+    flex: 0 0 auto;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    animation-name: scroll;
+    animation-delay: 0s;
+    animation-duration: 30s;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.marquee .inner > * {
+    white-space: nowrap;
+}
+
+/* <!-- Marquees --> */
+
+.portfolio-marquee {
+    max-height: 110px;
+    margin-top: 15px;
+}
+
+.email-marquee {
+    max-height: 245px;
+    margin: 60px 0 90px;
+}
+
+.contact-marquee-1,
+.contact-marquee-2 {
+    max-height: 107px;
+}
+
+.email-marquee .inner,
+.contact-marquee-1 .inner,
+.contact-marquee-2 .inner,
+.portfolio-marquee .inner {
+    font-size: min(max(9.6rem, 70px), 135px);
+    animation-duration: 60s;
+    animation-direction: reverse;
+}
+
+.contact-marquee-2 .inner {
+    animation-direction: normal;
+}
+
+.contact-marquee-1 .inner,
+.contact-marquee-2 .inner {
+    color: #949494;
+}
+
+.email-marquee .inner,
+.portfolio-marquee .inner {
+    color: var(--color-red);
+}
+
+.portfolio-marquee .inner > * {
+    margin-left: 350px;
+}
+
+.email-marquee .inner > * {
+    margin-left: 200px;
+}
+
+.contact-marquee-1 .inner > *,
+.contact-marquee-2 .inner > * {
+    display: flex;
+}
+
+.contact-marquee-1 .inner > * {
+    margin-left: 600px;
+}
+
+.contact-marquee-2 .inner > * {
+    margin-right: 600px;
 }
 
 /* <!-- Float Button --> */
