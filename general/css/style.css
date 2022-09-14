@@ -413,7 +413,7 @@ section .resize {
     height: 100%;
     width: 100%;
     display: flex;
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .marquee .inner {
@@ -566,6 +566,126 @@ section .resize {
     width: 36px;
     height: 36px;
     position: absolute;
+}
+
+/* <!-- Image Preview --> */
+.image-preview {
+    z-index: 10000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.image-preview-hidden {
+    display: none;
+}
+
+.image-preview .carousel-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    overflow: hidden;
+}
+
+.image-preview .carousel-container .carousel {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.29, 0.39, 0.2, 0.96);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+
+.image-preview .carousel-container .carousel .preview-item {
+    height: 100%;
+    width: 100vw;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-preview .carousel-container .carousel .preview-item .preview-image {
+    max-height: calc(100vh - 30px);
+    display: block;
+    max-width: 100%;
+    object-fit: contain;
+    margin: auto;
+    overflow: auto;
+    -webkit-backface-visibility: hidden;
+}
+
+.carousel-prev-arrow,
+.carousel-next-arrow,
+.preview-close {
+    position: fixed;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.carousel-prev-arrow,
+.carousel-next-arrow {
+    top: 50px;
+    bottom: 50px;
+    width: 15%;
+}
+
+.carousel-prev-arrow {
+    left: 0;
+    right: auto;
+}
+
+.carousel-next-arrow {
+    right: 0;
+    left: auto;
+}
+
+.preview-close {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    top: 10px;
+    right: 10px;
+    padding: 2px;
+    background: rgba(1, 1, 1, 0.3);
+}
+
+.left-arrow-wrapper,
+.right-arrow-wrapper {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background: rgba(1, 1, 1, 0.3);
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.left-arrow-wrapper {
+    left: 10px;
+    right: auto;
+}
+
+.right-arrow-wrapper {
+    right: 10px;
+    left: auto;
+
 }
 
 /* <!-- Globals --> */

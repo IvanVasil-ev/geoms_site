@@ -8,6 +8,12 @@ window.addEventListener('load', () => {
     const FLOAT_BUTTON = document.getElementById('float_button');
     const SIDEBAR_CLOSE = document.getElementById('sidebar-close');
 
+    const CAROUSEL = document.getElementById('carousel');
+    const IMAGE_PREVIEW = document.getElementById('image-preview');
+    const PREVIEW_CLOSE_BUTTON = document.getElementById('preview-close');
+    const PREV_ARROW_BUTTON = document.getElementById('carousel-prev-arrow');
+    const NEXT_ARROW_BUTTON = document.getElementById('carousel-next-arrow');
+
     const MAIN_BLOCK = document.getElementById('main');
 
     const WELCOME_BLOCK = document.getElementById('welcome');
@@ -33,6 +39,29 @@ window.addEventListener('load', () => {
     const toggleSidebar = () => {
         DOCUMENT.classList.toggle('scroll-lock');
         SIDEBAR.classList.toggle('sidebar-hidden');
+    };
+
+    const togglePreview = ({ index = null }) => {
+        if (index !== null) CAROUSEL.style.transform = `translateX(${index * innerWidth * -1}px)`;
+
+        DOCUMENT.classList.toggle('scroll-lock');
+        IMAGE_PREVIEW.classList.toggle('image-preview-hidden');
+    };
+
+    const toggleImage = ({ direction = 'next' }) => {
+        const { width } = CAROUSEL.getBoundingClientRect();
+        const transform = Number(CAROUSEL.style.transform.slice(11, -3));
+        const windowWidth = window.innerWidth;
+        const isNextDirection = direction === 'next';
+        const isFirstImage = transform === 0;
+        const lastImageTransform = (width - windowWidth) * -1
+        const isLastImage = transform === lastImageTransform;
+        const nextTransition = isNextDirection ? (transform - windowWidth) : (transform + windowWidth);
+
+        if (isFirstImage && !isNextDirection) return CAROUSEL.style.transform = `translateX(${lastImageTransform}px)`;
+        if (isLastImage && isNextDirection) return CAROUSEL.style.transform = 'translateX(0px)';
+
+        return CAROUSEL.style.transform = `translateX(${nextTransition}px)`;
     };
 
     const getValueByPercent = (config, { offset = 0, startFromTop = true }) => {
@@ -89,6 +118,21 @@ window.addEventListener('load', () => {
     //     const { x, y } = footerFloatRect;
     //     FOOTER_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
     // });
+
+    window.addEventListener('keydown', (e) => {
+        const { display } = getComputedStyle(IMAGE_PREVIEW);
+        if (display !== 'none') {
+            if (e.key === 'Escape') togglePreview({});
+            if (e.key === 'ArrowLeft') toggleImage({ direction: 'prev' });
+            if (e.key === 'ArrowRight') toggleImage({});
+        }
+    });
+
+    PREV_ARROW_BUTTON.addEventListener('click', () => toggleImage({ direction: 'prev' }));
+    NEXT_ARROW_BUTTON.addEventListener('click', () => toggleImage({}));
+    PREVIEW_CLOSE_BUTTON.addEventListener('click', () => togglePreview({}));
+    document.querySelectorAll('.gallery__photos > *').forEach((item, index) =>
+        item.addEventListener('click', () => togglePreview({ index })));
 
     FLOAT_BUTTON.addEventListener('click', () => toggleSidebar());
     SIDEBAR_CLOSE.addEventListener('click', () => toggleSidebar());
