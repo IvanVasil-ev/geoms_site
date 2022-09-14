@@ -119,6 +119,10 @@ window.addEventListener('load', () => {
     //     FOOTER_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
     // });
 
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', () => toggleSidebar());
+    });
+
     window.addEventListener('keydown', (e) => {
         const { display } = getComputedStyle(IMAGE_PREVIEW);
         if (display !== 'none') {
