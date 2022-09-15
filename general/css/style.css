@@ -414,7 +414,7 @@ section .resize {
     height: 100%;
     width: 100%;
     display: flex;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .marquee .inner {
