@@ -26,6 +26,8 @@ window.addEventListener('load', () => {
     const FOOTER_BLOCK = document.getElementById('footer')
     const FOOTER_FLOAT = document.getElementById('footer-float');
 
+    const TEXT_FADES = Array.from(document.querySelectorAll('.text-fades'));
+
     // <!-- Onload  -->
     MAIN_BLOCK.classList.add('main_opacity_visible');
 
@@ -34,8 +36,42 @@ window.addEventListener('load', () => {
     const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
     // const footerFloatRect = FOOTER_FLOAT.getBoundingClientRect();
+    const fadeRects = [];
+    (() => TEXT_FADES.forEach((item) => {
+        const { y: tValue, height } = item.getBoundingClientRect();
+        const bValue = tValue + height;
+
+        fadeRects.push({item, tValue, bValue });
+    }))();
 
     // <!-- Functions  -->
+    const setTextVisible = ({ item = null }) => {
+        if (!item) return;
+
+        const itemIndex = TEXT_FADES.findIndex((rect) => rect === item);
+        if (itemIndex === -1) return;
+
+        const itemRect = fadeRects[itemIndex];
+        const { tValue, bValue } = itemRect;
+        const scrollTValue = window.scrollY;
+        const scrollBValue = scrollTValue + window.innerHeight;
+        const isItemTopVisible = (tValue >= scrollTValue) && (tValue <= scrollBValue);
+        const isItemBotVisible = (bValue >= scrollTValue) && (bValue <= scrollBValue);
+        const isItemVisible = isItemBotVisible || isItemTopVisible;
+
+        if (isItemVisible && item.style.opacity === '0') {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = ' translateX(0)';
+            }, 500);
+        }
+    };
+
+    setTimeout(() => {
+        TEXT_FADES.forEach((item) => setTextVisible({ item }));
+        document.getElementById('html').style.scrollBehavior = 'smooth';
+    }, 1000);
+
     const toggleSidebar = () => {
         DOCUMENT.classList.toggle('scroll-lock');
         SIDEBAR.classList.toggle('sidebar-hidden');
@@ -91,6 +127,8 @@ window.addEventListener('load', () => {
     window.addEventListener('scroll', () => {
         const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { startFromTop: false });
         const [isAboutBlock, getAboutValue] = getValueByPercent(aboutBlockRect, {});
+
+        TEXT_FADES.forEach((item) => setTextVisible({ item }));
 
         if (isWelcomeBlock) {
             const newScale = getWelcomeValue({ min: 1, max: 2 });

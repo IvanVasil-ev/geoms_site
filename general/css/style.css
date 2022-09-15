@@ -29,7 +29,6 @@
 
 html {
     font-size: 0.62vw;
-    scroll-behavior: smooth;
 }
 
 html,
@@ -60,6 +59,11 @@ main {
 
 .main_opacity_visible {
     opacity: 1;
+}
+
+.text-fades {
+    transform: translateX(150px);
+    transition: 1200ms;
 }
 
 section {
@@ -181,7 +185,6 @@ section .resize {
 }
 
 .about__img-manifest {
-    transform: rotate(15deg);
     max-width: 482px;
     top: -125px;
     left: 600px;
