@@ -22,6 +22,9 @@ window.addEventListener('load', () => {
 
     const ABOUT_BLOCK = document.getElementById('about');
     const ABOUT_WHO = document.getElementById('about__who');
+    const WHAT_WE_WANT = document.getElementById('what-we-want');
+
+    const GALLERY_BLOCK = document.getElementById('gallery');
 
     const FOOTER_BLOCK = document.getElementById('footer')
     const FOOTER_FLOAT = document.getElementById('footer-float');
@@ -35,6 +38,7 @@ window.addEventListener('load', () => {
     const welcomeBlockRect = WELCOME_BLOCK.getBoundingClientRect();
     const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
+    const galleryBlockRect = GALLERY_BLOCK.getBoundingClientRect();
     // const footerFloatRect = FOOTER_FLOAT.getBoundingClientRect();
     const fadeRects = [];
     (() => TEXT_FADES.forEach((item) => {
@@ -127,6 +131,7 @@ window.addEventListener('load', () => {
     window.addEventListener('scroll', () => {
         const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { startFromTop: false });
         const [isAboutBlock, getAboutValue] = getValueByPercent(aboutBlockRect, {});
+        const [isGalleryBlock, getGalleryValue] = getValueByPercent(galleryBlockRect, {});
 
         TEXT_FADES.forEach((item) => setTextVisible({ item }));
 
@@ -143,6 +148,20 @@ window.addEventListener('load', () => {
             ABOUT_WHO.style.transform = `scale(${newScale}, ${newScale})`;
         } else {
             ABOUT_WHO.style.transform = 'scale(1, 1)';
+        }
+
+        if (isGalleryBlock) {
+            const newOpacity = getGalleryValue({ min: 0.4, max: 1 });
+            const newRotate = getGalleryValue({ max: 90 });
+            const newScale = getGalleryValue({ min: 1, max: 2 });
+            const newTranslateX = getGalleryValue({ max: 600 });
+            const newTranslateY = getGalleryValue({ max: 750 });
+
+            WHAT_WE_WANT.style.opacity = newOpacity;
+            WHAT_WE_WANT.style.transform = `rotate(-${newRotate}deg) translateX(-${newTranslateX}px) translateY(${newTranslateY}px) scale(${newScale}, ${newScale})`;
+        } else {
+            WHAT_WE_WANT.style.opacity = '1';
+            WHAT_WE_WANT.style.transform = `scale(1, 1) translate(0, 0) rotate(0deg)`;
         }
 
     }, { capture: true });
