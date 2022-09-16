@@ -154,7 +154,7 @@ window.addEventListener('load', () => {
             const newTranslateY = getGalleryValue({ max: 750 });
 
             WHAT_WE_WANT.style.opacity = newOpacity;
-            WHAT_WE_WANT.style.transform = `rotate(-${newRotate}deg) translateX(-${newTranslateX}px) translateY(${newTranslateY}px) scale(${newScale}, ${newScale})`;
+            WHAT_WE_WANT.style.transform = `rotate(-${newRotate}deg) translateX(-${newTranslateX/10}rem) translateY(${newTranslateY/10}rem) scale(${newScale}, ${newScale})`;
         } else {
             WHAT_WE_WANT.style.opacity = '1';
             WHAT_WE_WANT.style.transform = `scale(1, 1) translate(0, 0) rotate(0deg)`;

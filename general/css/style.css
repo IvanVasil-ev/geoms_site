@@ -90,13 +90,13 @@ section .resize {
 
 .welcome__text-wrapper {
     user-select: none;
-    max-width: 745px;
+    max-width: min(74.5rem, 745px);
     position: relative;
     width: 100%;
 }
 
 .welcome__text-wrapper p {
-    max-width: 745px;
+    max-width: min(74.5rem, 745px);
     width: 100%;
     font-size: min(max(13.5rem, 70px), 135px);
     color: var(--color-red);
@@ -104,7 +104,7 @@ section .resize {
     z-index: 12;
     line-height: 1;
     position: relative;
-    margin-bottom: 95px;
+    margin-bottom: 9.5rem;
 }
 
 .welcome__img-circle,
@@ -116,16 +116,16 @@ section .resize {
 }
 
 .welcome__img-circle {
-    top: calc(50% - 725px / 2);
-    left: calc(40% - 725px / 2);
+    top: calc(50% - min(72.5rem, 725px) / 2);
+    left: calc(40% - min(72.5rem, 725px) / 2);
     z-index: 11;
-    width: 725px;
+    width: min(72.5rem, 725px);
     animation: rotate 10s infinite linear;
 }
 .welcome__img-circle-2,
 .welcome__img-circle-3 {
     z-index: 13;
-    width: 376px;
+    width: min(37.6rem, 376px);
     right: -20%;
     bottom: -5%;
     animation: rotate 20s infinite linear;
@@ -137,21 +137,21 @@ section .resize {
 
 .welcome__img-square {
     z-index: 13;
-    width: 215px;
+    width: min(21.5rem, 215px);
     top: -20%;
-    left: -215px;
+    left: max(-21.5rem, -215px);
 }
 
 .welcome__img-float {
-    width: 45px;
-    top: calc(45% - 65px / 2);
+    width: min(4.5rem, 45px);
+    top: calc(45% - min(6.5rem, 65px) / 2);
     left: 55%;
     z-index: 13;
 }
 
 /* <!-- About --> */
 .about {
-    max-height: 445px;
+    max-height: min(44.5rem, 445px);
     height: 100%;
     position: relative;
     z-index: 100;
@@ -162,7 +162,7 @@ section .resize {
     display: flex;
     margin: 0 auto;
     transform: translate(5%, 0);
-    max-width: 1000px;
+    max-width: min(105rem, 1050px);
     width: 100%;
 }
 
@@ -173,23 +173,23 @@ section .resize {
 }
 
 .about__img-line {
-    max-width: 888px;
-    top: -230px;
-    left: -100px
+    max-width: min(88.8rem, 888px);
+    top: max(-23rem, -230px);
+    left: max(-10rem, -100px);
 }
 
 .about__img-line-2 {
-    max-width: 499px;
+    max-width: min(49.9rem, 499px);
     left: 55%;
-    top: 115px;
+    top: min(11.5rem, 115px);
     filter: grayscale(1);
     animation: rotate 30s infinite linear;
 }
 
 .about__img-manifest {
-    max-width: 482px;
-    top: -125px;
-    left: 600px;
+    max-width: min(48.2rem, 482px);
+    top: max(-12.5rem, -125px);
+    left: min(60rem, 600px);
 }
 
 .about__who {
@@ -203,12 +203,12 @@ section .resize {
 
 .what-we-want {
     position: absolute;
-    top: 50px;
-    width: 560px;
-    height: 31px;
+    top: min(5rem, 50px);
+    width: min(56rem, 560px);
+    height: min(3.1rem, 31px);
     transform-origin: top right;
     color: #8ae600;
-    font-size: 20px;
+    font-size: min(max(20rem, 15px), 20px);
     will-change: transform;
 }
 
@@ -222,7 +222,7 @@ section .resize {
     text-transform: uppercase;
     text-align: right;
     line-height: 1.6;
-    font-size: 16px;
+    font-size: min(max(1.6rem, 11px), 16px);
     position: relative;
 }
 
@@ -241,8 +241,8 @@ section .resize {
     height: auto;
     width: 100%;
     flex-wrap: wrap;
-    max-height: 564px;
-    padding: 0 40px;
+    max-height: min(56.5rem, 565px);
+    padding: 0 min(4rem, 40px);
 }
 
 .gallery__photos img {
@@ -259,23 +259,23 @@ section .resize {
 }
 
 .contact-marquee {
-    max-height: 255px;
+    max-height: min(25.5rem, 255px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 30px 0;
+    margin: min(3rem, 30px) 0;
 }
 
 .green-sphere {
     color: #9dfc03;
-    margin: 0 20px;
+    margin: 0 min(2rem, 20px);
 }
 
 /* <!-- Story  --> */
 .story {
     height: 100%;
-    max-height: 615px;
-    padding-bottom: 110px;
+    max-height: min(61.5rem, 615px);
+    padding-bottom: min(11rem, 110px);
 }
 
 .story > * > em {
@@ -285,14 +285,14 @@ section .resize {
 
 .story img {
     position: absolute;
-    bottom: 190px;
-    left: calc((50% - 620px / 2) - 110px);
-    max-width: 620px;
+    bottom: min(19rem, 190px);
+    left: calc((50% - min(62rem, 620px) / 2) - min(11rem, 110px));
+    max-width: min(62rem, 620px);
 }
 
 .story p {
-    font-size: 96px;
-    max-width: 1193px;
+    font-size: min(max(9.6rem, 30px), 96px);
+    max-width: min(119.3rem, 1190px);
     margin: 0 auto;
     line-height: 1;
     text-align: center;
@@ -301,7 +301,7 @@ section .resize {
 /* <!-- Free Space --> */
 .free-space {
     height: 100%;
-    max-height: 700px;
+    max-height: min(70rem, 700px);
     background-image: url('../assets/block-5_background.jpg');
     background-position: center center;
     background-size: cover;
@@ -317,20 +317,20 @@ section .resize {
 .why {
     position: relative;
     height: 100%;
-    max-height: 618px;
+    max-height: min(61.8rem, 618px);
     background-color: var(--color-red);
-    padding-top: 65px;
+    padding-top: min(6.5rem, 65px);
 }
 
 .why img {
     position: absolute;
-    top: -60px;
+    top: max(-6rem, -60px);
     left: 0;
-    max-width: 973px;
+    max-width: min(97.3rem, 973px);
 }
 
 .why__wrapper {
-    max-width: 1170px;
+    max-width: min(117rem, 1170px);
     height: 100%;
     width: 100%;
 }
@@ -338,26 +338,26 @@ section .resize {
 .why__text-wrapper {
     position: relative;
     margin: 0 auto;
-    font-size: 96px;
+    font-size: min(9.6rem, 96px);
     text-transform: uppercase;
 }
 
 .why__text-wrapper > p {
     position: relative;
     z-index: 2;
-    margin-left: 45px;
+    margin-left: min(4.5rem, 45px);
 }
 
 .why__content {
-    height: calc(100% - 110px);
-    padding-top: 120px;
+    height: calc(100% - min(11rem, 110px));
+    padding-top: min(12rem, 120px);
     display: flex;
     justify-content: space-between;
 }
 
 .content__item {
     position: relative;
-    max-width: 260px;
+    max-width: min(26rem, 260px);
     width: 100%;
     height: 100%;
     display: flex;
@@ -369,28 +369,28 @@ section .resize {
 .content__item > em {
     font-size: 16px;
     opacity: 0.6;
-    margin: 30px 0 5px;
+    margin: min(3rem, 30px) 0 5px;
 }
 
 .content__item > p {
-    font-size: 24px;
+    font-size: min(2.4rem, 24px);
 }
 
 .content__item > span {
-    font-size: 18px;
+    font-size: min(1.8rem, 18px);
     line-height: 1.6;
-    margin: auto 0 20px;
+    margin: auto 0 min(2rem, 20px);
 }
 
 
 /* <!-- Footer -->  */
 .footer {
-    padding-top: 30px;
+    padding-top: 3rem;
     overflow: hidden;
 }
 
 .footer__text-wrapper {
-    max-width: 1160px;
+    max-width: min(116rem, 1160px);
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -399,16 +399,16 @@ section .resize {
 
 .footer__divider {
     height: 1px;
-    width: calc(100% - 10px);
-    margin: 0 auto 10px;
+    width: calc(100% - min(1rem, 10px));
+    margin: 0 auto min(1rem, 10px);
     background: var(--color-black);
 }
 
 .footer__text-wrapper > p {
     width: 100%;
-    max-width: 1025px;
+    max-width: min(102.5rem, 1025px);
     text-transform: uppercase;
-    font-size: 66px;
+    font-size: min(6.6rem, 66px);
     line-height: 1;
 }
 
@@ -416,18 +416,18 @@ section .resize {
     position: absolute;
     top: 50%;
     left: 55%;
-    width: 287px;
+    width: min(28.7rem, 287px);
     z-index: 13;
 }
 
 .year {
-    padding-bottom: 15px;
+    padding-bottom: min(1.5rem, 15px);
 }
 
 .year > div > em {
-    font-size: 16px;
+    font-size: min(1.6rem, 16px);
     width: 100%;
-    max-width: 1170px;
+    max-width: min(117rem, 1170px);
 }
 
 /* <!-- Default Marquee --> */
@@ -458,18 +458,18 @@ section .resize {
 /* <!-- Marquees --> */
 
 .portfolio-marquee {
-    max-height: 110px;
-    margin-top: 15px;
+    max-height: min(11rem, 110px);
+    margin-top: min(1.5rem, 15px);
 }
 
 .email-marquee {
-    max-height: 245px;
-    margin: 60px 0 90px;
+    max-height: min(24.5rem, 245px);
+    margin: min(6rem, 60px) 0 min(9rem, 90px);
 }
 
 .contact-marquee-1,
 .contact-marquee-2 {
-    max-height: 107px;
+    max-height: min(10.7rem, 107px);
 }
 
 .email-marquee .inner,
@@ -496,11 +496,11 @@ section .resize {
 }
 
 .portfolio-marquee .inner > * {
-    margin-left: 350px;
+    margin-left: min(35rem, 350px);
 }
 
 .email-marquee .inner > * {
-    margin-left: 200px;
+    margin-left: min(20rem, 200px);
 }
 
 .contact-marquee-1 .inner > *,
@@ -509,11 +509,11 @@ section .resize {
 }
 
 .contact-marquee-1 .inner > * {
-    margin-left: 600px;
+    margin-left: min(60rem, 600px);
 }
 
 .contact-marquee-2 .inner > * {
-    margin-right: 600px;
+    margin-right: min(60rem, 600px);
 }
 
 /* <!-- Float Button --> */
@@ -542,7 +542,7 @@ section .resize {
     width: 100vw;
     height: 100vh;
     display: flex;
-    z-index: 1000;
+    z-index: 100000;
     position: fixed;
     transition: 700ms;
     user-select: none;
@@ -612,10 +612,10 @@ section .resize {
 
 .image-preview .carousel-container {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
+    top: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
     overflow: hidden;
 }
 
@@ -642,7 +642,7 @@ section .resize {
 }
 
 .image-preview .carousel-container .carousel .preview-item .preview-image {
-    max-height: calc(100vh - 30px);
+    max-height: calc(100vh - 3rem);
     display: block;
     max-width: 100%;
     object-fit: contain;
@@ -662,8 +662,8 @@ section .resize {
 
 .carousel-prev-arrow,
 .carousel-next-arrow {
-    top: 50px;
-    bottom: 50px;
+    top: 5rem;
+    bottom: 5rem;
     width: 15%;
 }
 
@@ -679,10 +679,10 @@ section .resize {
 
 .preview-close {
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    top: 10px;
-    right: 10px;
+    height: 4rem;
+    width: 4rem;
+    top: 1rem;
+    right: 1rem;
     padding: 2px;
     background: rgba(1, 1, 1, 0.3);
 }
@@ -692,20 +692,20 @@ section .resize {
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     background: rgba(1, 1, 1, 0.3);
     border-radius: 50%;
     padding: 2px;
 }
 
 .left-arrow-wrapper {
-    left: 10px;
+    left: 1rem;
     right: auto;
 }
 
 .right-arrow-wrapper {
-    right: 10px;
+    right: 1rem;
     left: auto;
 
 }
