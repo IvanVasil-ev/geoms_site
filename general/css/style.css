@@ -13,6 +13,12 @@
     to { transform: rotate(360deg) }
 }
 
+@keyframes invisible {
+    0% { opacity: 1 }
+    50% { opacity: 0.1 }
+    100% { opacity: 1 }
+}
+
 @keyframes scroll {
     0% { transform: translateX(0%) }
     100% { transform: translateX(-100%) }
@@ -120,7 +126,7 @@ section .resize {
     left: calc(40% - min(72.5rem, 725px) / 2);
     z-index: 11;
     width: min(72.5rem, 725px);
-    animation: rotate 10s infinite linear;
+    animation: rotate 10s infinite linear, invisible 10s infinite linear;
 }
 .welcome__img-circle-2,
 .welcome__img-circle-3 {
