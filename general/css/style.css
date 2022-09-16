@@ -417,6 +417,7 @@ section .resize {
     top: 50%;
     left: 55%;
     width: 287px;
+    z-index: 13;
 }
 
 .year {

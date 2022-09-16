@@ -26,9 +26,6 @@ window.addEventListener('load', () => {
 
     const GALLERY_BLOCK = document.getElementById('gallery');
 
-    const FOOTER_BLOCK = document.getElementById('footer')
-    const FOOTER_FLOAT = document.getElementById('footer-float');
-
     const TEXT_FADES = Array.from(document.querySelectorAll('.text-fades'));
 
     // <!-- Onload  -->
@@ -39,7 +36,6 @@ window.addEventListener('load', () => {
     const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
     const galleryBlockRect = GALLERY_BLOCK.getBoundingClientRect();
-    // const footerFloatRect = FOOTER_FLOAT.getBoundingClientRect();
     const fadeRects = [];
     (() => TEXT_FADES.forEach((item) => {
         const { y: tValue, height } = item.getBoundingClientRect();
@@ -170,11 +166,6 @@ window.addEventListener('load', () => {
         const { y, x } = welcomeFloatRect;
         WELCOME_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
     });
-
-    // FOOTER_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) => {
-    //     const { x, y } = footerFloatRect;
-    //     FOOTER_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
-    // });
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', () => toggleSidebar());
