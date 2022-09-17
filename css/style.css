@@ -4,7 +4,8 @@
     --color-red: #cc2929;
     --color-sidebar-background: #00000010;
     --color-green: #9dfc03;
-    --font-family: 'Arial', Arial, sans-serif;
+    --color-light-green: #b8e026;
+    --font-family: Roboto, Arial, sans-serif;
 }
 
 /* <!-- Animations --> */
@@ -254,14 +255,17 @@ section .resize {
 .gallery__photos img {
     width: calc(100% / 4);
     transition: 150ms;
+    filter: grayscale(1);
 }
 
 .gallery__photos img:hover {
     cursor: zoom-in;
     position: relative;
     transform: scale(1.04);
+    z-index: 20;
     -ms-transform: scale(1.04);
-    box-shadow: 0 2px 20px 2px rgb(0 0 0 / 45%)
+    box-shadow: 0 2px 20px 2px rgb(0 0 0 / 45%);
+    filter: none;
 }
 
 .contact-marquee {
@@ -482,7 +486,7 @@ section .resize {
 .contact-marquee-1 .inner,
 .contact-marquee-2 .inner,
 .portfolio-marquee .inner {
-    font-size: min(max(9.6rem, 70px), 135px);
+    font-size: min(max(6.6rem, 40px), 135px);
     animation-duration: 60s;
     animation-direction: reverse;
 }
@@ -514,14 +518,6 @@ section .resize {
     display: flex;
 }
 
-.contact-marquee-1 .inner > * {
-    margin-left: min(60rem, 600px);
-}
-
-.contact-marquee-2 .inner > * {
-    margin-right: min(60rem, 600px);
-}
-
 /* <!-- Float Button --> */
 .float_button {
     top: 40px;
@@ -537,6 +533,10 @@ section .resize {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--color-black);
+}
+
+#sidebar-close {
+    background-color: transparent;
 }
 
 /* <!-- Side Menu --> */
@@ -560,14 +560,14 @@ section .resize {
 }
 
 .sidebar .menu {
-    width: 375px;
+    width: 250px;
     height: 100%;
     display: flex;
     position: relative;
     flex-direction: column;
     padding: 48px 40px 38px;
     justify-content: space-between;
-    background-color: var(--color-black);
+    background-color: var(--color-light-green);
 }
 
 .sidebar .menu .links {
@@ -576,11 +576,12 @@ section .resize {
 }
 
 .sidebar .menu .links a {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 400;
     width: fit-content;
     margin-bottom: 15px;
-    color: var(--color-white);
+    text-transform: uppercase;
+    color: var(--color-black);
 }
 
 .sidebar .menu .socials a {
