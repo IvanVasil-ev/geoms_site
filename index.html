@@ -9,9 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
   <title>GEOM</title>
 </head>
-<body>
+<body id="body">
   <main id="main" class="main_opacity">
     <!-- Welcome -->
     <section class="welcome" id="welcome">
@@ -266,11 +267,16 @@
       </section>
     </section>
 
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar">
+      <div class="progress" id="progress" style="width: 0;"></div>
+    </div>
+
 
     <!-- Float button -->
     <button class="float_button" id="float_button">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ffffff" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        <path d="M4 7h16M4 12h16M4 17h16" />
       </svg>
     </button>
 

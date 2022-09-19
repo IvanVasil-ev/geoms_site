@@ -3,6 +3,7 @@ window.scrollTo(0, 0);
 window.addEventListener('load', () => {
     // <!-- Selectors  -->
     const DOCUMENT = document.getElementById('html');
+    const BODY = document.getElementById('body');
 
     const SIDEBAR = document.getElementById('sidebar');
     const FLOAT_BUTTON = document.getElementById('float_button');
@@ -26,12 +27,15 @@ window.addEventListener('load', () => {
 
     const GALLERY_BLOCK = document.getElementById('gallery');
 
+    const PROGRESS = document.getElementById('progress');
+
     const TEXT_FADES = Array.from(document.querySelectorAll('.text-fades'));
 
     // <!-- Onload  -->
     MAIN_BLOCK.classList.add('main_opacity_visible');
 
     // <!-- Constants -->
+    const bodyBlockRect = BODY.getBoundingClientRect();
     const welcomeBlockRect = WELCOME_BLOCK.getBoundingClientRect();
     const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
@@ -100,7 +104,7 @@ window.addEventListener('load', () => {
         return CAROUSEL.style.transform = `translateX(${nextTransition}px)`;
     };
 
-    const getValueByPercent = (config, { offset = 0, startFromTop = true }) => {
+    const getValueByPercent = (config, { offset = 0, startFromTop = true, inPercent = false, withConsole = false }) => {
         if (!config) {
             return;
         }
@@ -114,22 +118,33 @@ window.addEventListener('load', () => {
         const fullHeight = startFromTop ? scrollBotValue : scrollTopValue;
         const coverage = (fullHeight - y) / percent;
         const minMaxCoverage = coverage >= 100 ? 100 : coverage <= 0 ? 0 : coverage;
+        const getNewValueInPercent = () => scrollTopValue / ((height - window.innerHeight) / 100);
+
         const getValue = ({ min = 0, max = 1 }) =>
           min > 0 ? 1 + minMaxCoverage * (max / 100) : minMaxCoverage * (max / 100);
-
-        const getNewValue = ({ min = 0, max = 1 }) =>
+        const getNewValueInNumber = ({ min = 0, max = 1 }) =>
           getValue({ min, max }) > max ? max : getValue({ min, max });
+
+        const getNewValue = inPercent ? getNewValueInPercent : getNewValueInNumber;
+        if (withConsole) console.log(elementHeight, fullHeight);
 
         return [isBlockVisible, getNewValue];
     };
 
     // <!-- Listeners  -->
     window.addEventListener('scroll', () => {
+        const [isBodyBlock, getBodyValue] = getValueByPercent({ y: 0, height: 4325 }, { startFromTop: false, inPercent: true });
         const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { startFromTop: false });
         const [isAboutBlock, getAboutValue] = getValueByPercent(aboutBlockRect, {});
         const [isGalleryBlock, getGalleryValue] = getValueByPercent(galleryBlockRect, {});
 
         TEXT_FADES.forEach((item) => setTextVisible({ item }));
+
+        if (isBodyBlock) {
+            PROGRESS.style.width = `${getBodyValue()}%`;
+        } else {
+            PROGRESS.style.width = '0';
+        }
 
         if (isWelcomeBlock) {
             const newScale = getWelcomeValue({ min: 1, max: 2 });

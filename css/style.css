@@ -5,6 +5,7 @@
     --color-sidebar-background: #00000010;
     --color-green: #9dfc03;
     --color-light-green: #b8e026;
+    --color-dark-green: #c4f274;
     --font-family: Roboto, Arial, sans-serif;
 }
 
@@ -140,6 +141,7 @@ section .resize {
 
 .welcome__img-circle-2 {
     bottom: -20%;
+    z-index: 20;
 }
 
 .welcome__img-square {
@@ -518,17 +520,34 @@ section .resize {
     display: flex;
 }
 
+/* <!-- Progress Bar --> */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 15px;
+    z-index: 99999;
+}
+
+.progress {
+    height: 15px;
+    background-color: var(--color-dark-green);
+}
+
 /* <!-- Float Button --> */
 .float_button {
-    top: 40px;
-    right: 40px;
-    width: 48px;
-    height: 48px;
+    top: 15px;
+    right: 15px;
+    width: 75px;
+    height: 75px;
     z-index: 999;
     padding: 10px;
     display: flex;
     cursor: pointer;
     border-radius: 50%;
+    opacity: 0.5;
     position: fixed;
     flex-direction: column;
     justify-content: space-between;
@@ -714,7 +733,6 @@ section .resize {
 .right-arrow-wrapper {
     right: 1rem;
     left: auto;
-
 }
 
 /* <!-- Globals --> */
