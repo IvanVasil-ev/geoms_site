@@ -6,6 +6,7 @@ window.addEventListener('load', () => {
     const BODY = document.getElementById('body');
 
     const SIDEBAR = document.getElementById('sidebar');
+    const MENU = document.getElementById('sidebar-background');
     const FLOAT_BUTTON = document.getElementById('float_button');
     const SIDEBAR_CLOSE = document.getElementById('sidebar-close');
 
@@ -79,6 +80,7 @@ window.addEventListener('load', () => {
     const toggleSidebar = () => {
         DOCUMENT.classList.toggle('scroll-lock');
         SIDEBAR.classList.toggle('sidebar-hidden');
+        MENU.classList.toggle('background-hidden');
     };
 
     const togglePreview = ({ index = null }) => {
