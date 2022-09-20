@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
     // <!-- Selectors  -->
     const DOCUMENT = document.getElementById('html');
     const BODY = document.getElementById('body');
+    const MAIN_BLOCK = document.getElementById('main');
 
     const SIDEBAR = document.getElementById('sidebar');
     const MENU = document.getElementById('sidebar-background');
@@ -16,8 +17,6 @@ window.addEventListener('load', () => {
     const PREV_ARROW_BUTTON = document.getElementById('carousel-prev-arrow');
     const NEXT_ARROW_BUTTON = document.getElementById('carousel-next-arrow');
 
-    const MAIN_BLOCK = document.getElementById('main');
-
     const WELCOME_BLOCK = document.getElementById('welcome');
     const WELCOME_SQUARE = document.getElementById('welcome-square');
     const WELCOME_FLOAT = document.getElementById('welcome-float');
@@ -28,19 +27,23 @@ window.addEventListener('load', () => {
 
     const GALLERY_BLOCK = document.getElementById('gallery');
 
+    const WHY_BLOCK = document.getElementById('why-content');
+
     const PROGRESS = document.getElementById('progress');
 
     const TEXT_FADES = Array.from(document.querySelectorAll('.text-fades'));
+    const TEXT_BLINKS = Array.from(document.querySelectorAll('.text-blink'));
 
     // <!-- Onload  -->
     MAIN_BLOCK.classList.add('main_opacity_visible');
 
     // <!-- Constants -->
-    const bodyBlockRect = BODY.getBoundingClientRect();
     const welcomeBlockRect = WELCOME_BLOCK.getBoundingClientRect();
     const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
     const galleryBlockRect = GALLERY_BLOCK.getBoundingClientRect();
+    const whyBlockRect = WHY_BLOCK.getBoundingClientRect();
+
     const fadeRects = [];
     (() => TEXT_FADES.forEach((item) => {
         const { y: tValue, height } = item.getBoundingClientRect();
@@ -50,6 +53,15 @@ window.addEventListener('load', () => {
     }))();
 
     // <!-- Functions  -->
+    const setBlinksVisible = ({ item = null, time = 0 }) => {
+        if (!item) return;
+
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+        }, time + 1000);
+    };
+
     const setTextVisible = ({ item = null }) => {
         if (!item) return;
 
@@ -135,10 +147,11 @@ window.addEventListener('load', () => {
 
     // <!-- Listeners  -->
     window.addEventListener('scroll', () => {
-        const [isBodyBlock, getBodyValue] = getValueByPercent({ y: 0, height: 4325 }, { startFromTop: false, inPercent: true });
+        const [isBodyBlock, getBodyValue] = getValueByPercent({ y: 0, height: document.body.scrollHeight }, { startFromTop: false, inPercent: true });
         const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { startFromTop: false });
         const [isAboutBlock, getAboutValue] = getValueByPercent(aboutBlockRect, {});
         const [isGalleryBlock, getGalleryValue] = getValueByPercent(galleryBlockRect, {});
+        const [isWhyBlock] = getValueByPercent(whyBlockRect, {});
 
         TEXT_FADES.forEach((item) => setTextVisible({ item }));
 
@@ -177,6 +190,13 @@ window.addEventListener('load', () => {
             WHAT_WE_WANT.style.transform = `scale(1, 1) translate(0, 0) rotate(0deg)`;
         }
 
+        if (isWhyBlock) {
+            TEXT_BLINKS.forEach((item, index) => {
+               const time = (index + 1) * 100;
+
+               if (item.style.opacity === '0') setBlinksVisible({ item, time });
+            });
+        }
     }, { capture: true });
 
     WELCOME_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) => {
