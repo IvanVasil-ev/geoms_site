@@ -177,13 +177,13 @@ window.addEventListener('load', () => {
         }
 
         if (isGalleryBlock) {
-            const newOpacity = getGalleryValue({ min: 0.4, max: 1 });
+            const newOpacity = getGalleryValue({ max: 0.6 });
             const newRotate = getGalleryValue({ max: 90 });
             const newScale = getGalleryValue({ min: 1, max: 2 });
             const newTranslateX = getGalleryValue({ max: 600 });
             const newTranslateY = getGalleryValue({ max: 750 });
 
-            WHAT_WE_WANT.style.opacity = newOpacity;
+            WHAT_WE_WANT.style.opacity = String(1 - newOpacity);
             WHAT_WE_WANT.style.transform = `rotate(-${newRotate}deg) translateX(max(-${newTranslateX/10}rem, -${newTranslateX}px)) translateY(min(${newTranslateY/10}rem, ${newTranslateY}px)) scale(${newScale}, ${newScale})`;
         } else {
             WHAT_WE_WANT.style.opacity = '1';

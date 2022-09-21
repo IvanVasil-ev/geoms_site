@@ -184,13 +184,13 @@ section .resize {
 .about__img-line {
     max-width: min(88.8rem, 888px);
     top: max(-23rem, -230px);
-    left: max(-10rem, -100px);
+    left: max(-18rem, -180px);
 }
 
 .about__img-line-2 {
     max-width: min(49.9rem, 499px);
-    left: 55%;
-    top: min(11.5rem, 115px);
+    left: 40%;
+    top: min(14rem, 140px);
     filter: grayscale(1);
     animation: rotate 30s infinite linear;
 }
@@ -198,13 +198,14 @@ section .resize {
 .about__img-manifest {
     max-width: min(48.2rem, 482px);
     top: max(-12.5rem, -125px);
-    left: min(60rem, 600px);
+    left: min(52rem, 520px);
 }
 
 .about__who {
     display: flex;
     flex-direction: column;
-    font-size: min(max(9.6rem, 30px), 96px);
+    font-size: min(max(9.6rem, 30px), 85px);
+    margin-top: 40px;
     flex: 1;
     position: relative;
     text-transform: uppercase;
@@ -230,9 +231,45 @@ section .resize {
 .about__about-us {
     text-transform: uppercase;
     text-align: right;
-    line-height: 1.6;
     font-size: min(max(1.6rem, 11px), 16px);
     position: relative;
+}
+
+.about-us-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 585px;
+}
+
+.about-us-content > p:first-child {
+    text-align: right;
+}
+
+.about-us-content > p:not(:first-child) {
+    text-align: left;
+}
+
+.text-1,
+.text-2,
+.text-3 {
+    width: fit-content;
+}
+
+.text-1 {
+    font-size: min(1.6rem, 16px);
+}
+
+.text-2 {
+    font-size: min(1.3rem, 13px);
+    letter-spacing: 0.5px;
+    line-height: min(max(1.7rem, 13px), 17px);
+    color: #8a8a8a;
+}
+
+.text-3 {
+    font-size: min(1.8rem, 18px);
+    line-height: 23px;
+    color: #a80000;
 }
 
 /* <!-- Gallery --> */
