@@ -10,25 +10,21 @@ window.addEventListener('load', () => {
     const MENU = document.getElementById('sidebar-background');
     const FLOAT_BUTTON = document.getElementById('float_button');
     const SIDEBAR_CLOSE = document.getElementById('sidebar-close');
-
     const CAROUSEL = document.getElementById('carousel');
     const IMAGE_PREVIEW = document.getElementById('image-preview');
     const PREVIEW_CLOSE_BUTTON = document.getElementById('preview-close');
     const PREV_ARROW_BUTTON = document.getElementById('carousel-prev-arrow');
     const NEXT_ARROW_BUTTON = document.getElementById('carousel-next-arrow');
-
     const WELCOME_BLOCK = document.getElementById('welcome');
     const WELCOME_SQUARE = document.getElementById('welcome-square');
     const WELCOME_FLOAT = document.getElementById('welcome-float');
-
     const ABOUT_BLOCK = document.getElementById('about');
     const ABOUT_WHO = document.getElementById('about__who');
     const WHAT_WE_WANT = document.getElementById('what-we-want');
-
     const GALLERY_BLOCK = document.getElementById('gallery');
-
     const WHY_BLOCK = document.getElementById('why-content');
-
+    const FOOTER_BLOCK = document.getElementById('footer');
+    const FOOTER_FLOAT = document.getElementById('footer-float');
     const PROGRESS = document.getElementById('progress');
 
     const TEXT_FADES = Array.from(document.querySelectorAll('.text-fades'));
@@ -39,10 +35,10 @@ window.addEventListener('load', () => {
 
     // <!-- Constants -->
     const welcomeBlockRect = WELCOME_BLOCK.getBoundingClientRect();
-    const welcomeFloatRect = WELCOME_FLOAT.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
     const galleryBlockRect = GALLERY_BLOCK.getBoundingClientRect();
     const whyBlockRect = WHY_BLOCK.getBoundingClientRect();
+    const footerBlockRect = FOOTER_BLOCK.getBoundingClientRect();
 
     const fadeRects = [];
     (() => TEXT_FADES.forEach((item) => {
@@ -59,7 +55,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             item.style.opacity = '1';
             item.style.transform = 'scale(1)';
-        }, time + 1000);
+        }, time + 700);
     };
 
     const setTextVisible = ({ item = null }) => {
@@ -199,14 +195,14 @@ window.addEventListener('load', () => {
         }
     }, { capture: true });
 
-    WELCOME_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) => {
-        const { y, x } = welcomeFloatRect;
-        WELCOME_FLOAT.style.transform = `translate3d(${x - clientX}px, ${y - clientY}px, 0px)`;
-    });
+    WELCOME_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) =>
+      WELCOME_FLOAT.style.transform = `translate3d(calc(81rem - ${clientX}px), calc(52rem - ${clientY}px), 0px)`);
 
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', () => toggleSidebar());
-    });
+    MAIN_BLOCK.addEventListener('mousemove', ({ clientY, clientX }) =>
+      FOOTER_FLOAT.style.transform = `translate3d(calc(120rem - ${clientX}px), calc(50rem - ${clientY}px), 0px)`);
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) =>
+        anchor.addEventListener('click', () => toggleSidebar()));
 
     window.addEventListener('keydown', (e) => {
         const { display } = getComputedStyle(IMAGE_PREVIEW);
