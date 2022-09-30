@@ -15,6 +15,11 @@
     to { transform: rotate(360deg) }
 }
 
+@keyframes reversed_rotate {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(-360deg) }
+}
+
 @keyframes invisible {
     0% { opacity: 0.1 }
     50% { opacity: 1 }
@@ -62,7 +67,7 @@ main {
 
 .main_opacity {
     opacity: 0;
-    transition: opacity ease-in-out 3s;
+    transition: opacity ease-in-out 4s;
 }
 
 .main_opacity_visible {
@@ -124,11 +129,11 @@ section .resize {
 }
 
 .welcome__img-circle {
-    top: calc(50% - min(72.5rem, 725px) / 2);
-    left: calc(40% - min(55rem, 550px) / 2);
+    top: calc(50% - min(79.5rem, 795px) / 2);
+    left: calc(40% - min(57rem, 570px) / 2);
     z-index: 11;
     width: min(72.5rem, 725px);
-    animation: rotate 8500ms infinite linear, invisible 3s infinite linear;
+    animation: rotate 10s infinite linear, invisible 3s infinite linear;
 }
 .welcome__img-circle-2,
 .welcome__img-circle-3 {
@@ -136,7 +141,7 @@ section .resize {
     width: min(37.6rem, 376px);
     right: -20%;
     bottom: 15%;
-    animation: rotate 1600ms infinite linear;
+    animation: reversed_rotate 4s infinite linear;
 }
 
 .welcome__img-circle-2 {
