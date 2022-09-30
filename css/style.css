@@ -16,9 +16,9 @@
 }
 
 @keyframes invisible {
-    0% { opacity: 1 }
-    50% { opacity: 0.1 }
-    100% { opacity: 1 }
+    0% { opacity: 0.1 }
+    50% { opacity: 1 }
+    100% { opacity: 0.1 }
 }
 
 @keyframes scroll {
@@ -125,29 +125,29 @@ section .resize {
 
 .welcome__img-circle {
     top: calc(50% - min(72.5rem, 725px) / 2);
-    left: calc(40% - min(72.5rem, 725px) / 2);
+    left: calc(40% - min(55rem, 550px) / 2);
     z-index: 11;
     width: min(72.5rem, 725px);
-    animation: rotate 10s infinite linear, invisible 10s infinite linear;
+    animation: rotate 8500ms infinite linear, invisible 3s infinite linear;
 }
 .welcome__img-circle-2,
 .welcome__img-circle-3 {
-    z-index: 13;
+    z-index: 6;
     width: min(37.6rem, 376px);
     right: -20%;
-    bottom: -5%;
-    animation: rotate 20s infinite linear;
+    bottom: 15%;
+    animation: rotate 1600ms infinite linear;
 }
 
 .welcome__img-circle-2 {
-    bottom: -20%;
+    bottom: -5%;
     z-index: 20;
 }
 
 .welcome__img-square {
     z-index: 13;
     width: min(21.5rem, 215px);
-    top: -20%;
+    top: -16.5%;
     left: max(-21.5rem, -215px);
 }
 

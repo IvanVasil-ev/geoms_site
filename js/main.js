@@ -3,7 +3,7 @@ window.scrollTo(0, 0);
 window.addEventListener('load', () => {
     // <!-- Selectors  -->
     const DOCUMENT = document.getElementById('html');
-    const BODY = document.getElementById('body');
+    //const BODY = document.getElementById('body');
     const MAIN_BLOCK = document.getElementById('main');
 
     const SIDEBAR = document.getElementById('sidebar');
@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
     const galleryBlockRect = GALLERY_BLOCK.getBoundingClientRect();
     const whyBlockRect = WHY_BLOCK.getBoundingClientRect();
-    const footerBlockRect = FOOTER_BLOCK.getBoundingClientRect();
+    //const footerBlockRect = FOOTER_BLOCK.getBoundingClientRect();
 
     const fadeRects = [];
     (() => TEXT_FADES.forEach((item) => {
