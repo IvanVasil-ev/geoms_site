@@ -1,11 +1,8 @@
 window.scrollTo(0, 0);
 
 window.addEventListener('load', () => {
-    // <!-- Selectors  -->
     const DOCUMENT = document.getElementById('html');
-    //const BODY = document.getElementById('body');
     const MAIN_BLOCK = document.getElementById('main');
-
     const SIDEBAR = document.getElementById('sidebar');
     const MENU = document.getElementById('sidebar-background');
     const FLOAT_BUTTON = document.getElementById('float_button');
@@ -23,39 +20,50 @@ window.addEventListener('load', () => {
     const WHAT_WE_WANT = document.getElementById('what-we-want');
     const GALLERY_BLOCK = document.getElementById('gallery');
     const WHY_BLOCK = document.getElementById('why-content');
-    const FOOTER_BLOCK = document.getElementById('footer');
     const FOOTER_FLOAT = document.getElementById('footer-float');
     const PROGRESS = document.getElementById('progress');
-
     const TEXT_FADES = Array.from(document.querySelectorAll('.text-fades'));
     const TEXT_BLINKS = Array.from(document.querySelectorAll('.text-blink'));
 
-    // <!-- Onload  -->
     MAIN_BLOCK.classList.add('main_opacity_visible');
 
-    // <!-- Constants -->
     const welcomeBlockRect = WELCOME_BLOCK.getBoundingClientRect();
     const aboutBlockRect = ABOUT_BLOCK.getBoundingClientRect();
     const galleryBlockRect = GALLERY_BLOCK.getBoundingClientRect();
     const whyBlockRect = WHY_BLOCK.getBoundingClientRect();
-    //const footerBlockRect = FOOTER_BLOCK.getBoundingClientRect();
 
     const fadeRects = [];
     (() => TEXT_FADES.forEach((item) => {
-        const { y: tValue, height } = item.getBoundingClientRect();
-        const bValue = tValue + height;
+        const { y: tValue } = item.getBoundingClientRect();
 
-        fadeRects.push({item, tValue, bValue });
+        fadeRects.push({ tValue });
     }))();
 
-    // <!-- Functions  -->
-    const setBlinksVisible = ({ item = null, time = 0 }) => {
+    const blinkRects = [];
+    (() => TEXT_BLINKS.forEach((item) => {
+        const { y: tValue } = item.getBoundingClientRect();
+
+        blinkRects.push({ tValue });
+    }))();
+
+    const setBlinksVisible = ({ item = null, index }) => {
         if (!item) return;
 
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-        }, time + 700);
+        const time = (index + 1) * 100;
+        const itemIndex = TEXT_BLINKS.findIndex((rect) => rect === item);
+        if (itemIndex === -1) return;
+
+        const itemRect = blinkRects[itemIndex];
+        const { tValue } = itemRect;
+        const bValue = window.scrollY + window.innerHeight;
+        const isItemVisible = bValue >= tValue;
+
+        if (isItemVisible && item.style.opacity === '0') {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            }, time + 700);
+        }
     };
 
     const setTextVisible = ({ item = null }) => {
@@ -65,12 +73,9 @@ window.addEventListener('load', () => {
         if (itemIndex === -1) return;
 
         const itemRect = fadeRects[itemIndex];
-        const { tValue, bValue } = itemRect;
-        const scrollTValue = window.scrollY;
-        const scrollBValue = scrollTValue + window.innerHeight;
-        const isItemTopVisible = (tValue >= scrollTValue) && (tValue <= scrollBValue);
-        const isItemBotVisible = (bValue >= scrollTValue) && (bValue <= scrollBValue);
-        const isItemVisible = isItemBotVisible || isItemTopVisible;
+        const { tValue } = itemRect;
+        const bValue = window.scrollY + window.innerHeight;
+        const isItemVisible = bValue >= tValue;
 
         if (isItemVisible && item.style.opacity === '0') {
             setTimeout(() => {
@@ -82,6 +87,8 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
         TEXT_FADES.forEach((item) => setTextVisible({ item }));
+        TEXT_BLINKS.forEach((item, index) => setBlinksVisible({ item, index }));
+
         document.getElementById('html').style.scrollBehavior = 'smooth';
     }, 1000);
 
@@ -141,7 +148,6 @@ window.addEventListener('load', () => {
         return [isBlockVisible, getNewValue];
     };
 
-    // <!-- Listeners  -->
     window.addEventListener('scroll', () => {
         const [isBodyBlock, getBodyValue] = getValueByPercent({ y: 0, height: document.body.scrollHeight }, { startFromTop: false, inPercent: true });
         const [isWelcomeBlock, getWelcomeValue] = getValueByPercent(welcomeBlockRect, { startFromTop: false });

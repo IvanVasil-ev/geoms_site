@@ -9,7 +9,6 @@
     --font-family: Roboto, Arial, sans-serif;
 }
 
-/* <!-- Animations --> */
 @keyframes rotate {
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
@@ -95,7 +94,6 @@ section .resize {
     flex-direction: column;
 }
 
-/* <!-- Welcome --> */
 .welcome {
     height: 100%;
     overflow: hidden;
@@ -163,7 +161,6 @@ section .resize {
     z-index: 13;
 }
 
-/* <!-- About --> */
 .about {
     max-height: min(44.5rem, 445px);
     height: 100%;
@@ -171,12 +168,17 @@ section .resize {
     z-index: 100;
 }
 
+.about > .resize {
+    overflow: hidden;
+    height: 110%;
+}
+
 .about__text-wrapper {
     position: relative;
     display: flex;
     margin: 0 auto;
     transform: translate(5%, 0);
-    max-width: min(105rem, 1050px);
+    max-width: min(110rem, 1100px);
     width: 100%;
 }
 
@@ -194,8 +196,8 @@ section .resize {
 
 .about__img-line-2 {
     max-width: min(49.9rem, 499px);
-    left: 40%;
-    top: min(14rem, 140px);
+    left: 50%;
+    top: min(30rem, 300px);
     filter: grayscale(1);
     animation: rotate 30s infinite linear;
 }
@@ -218,7 +220,8 @@ section .resize {
 
 .what-we-want {
     position: absolute;
-    top: min(5rem, 50px);
+    top: 40%;
+    left: 25%;
     width: min(56rem, 560px);
     height: min(3.1rem, 31px);
     transform-origin: top right;
@@ -277,7 +280,6 @@ section .resize {
     color: #a80000;
 }
 
-/* <!-- Gallery --> */
 section.gallery {
     max-height: unset;
 }
@@ -331,7 +333,6 @@ section.gallery {
     margin: 0 min(2rem, 20px);
 }
 
-/* <!-- Story  --> */
 .story {
     height: 100%;
     max-height: min(61.5rem, 615px);
@@ -358,7 +359,6 @@ section.gallery {
     text-align: center;
 }
 
-/* <!-- Free Space --> */
 .free-space {
     height: 100%;
     max-height: min(70rem, 700px);
@@ -373,7 +373,6 @@ section.gallery {
 }
 
 
-/* <!-- Why --> */
 .why {
     position: relative;
     height: 100%;
@@ -383,6 +382,7 @@ section.gallery {
 
 .why > .resize {
     max-width: 1200px;
+    overflow: hidden;
 }
 
 .why img {
@@ -415,6 +415,7 @@ section.gallery {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     row-gap: 100px;
+    place-items: center;
 }
 
 .content-item {
@@ -463,7 +464,6 @@ section.gallery {
 }
 
 
-/* <!-- Footer -->  */
 .footer {
     padding-top: 3rem;
     overflow: hidden;
@@ -504,6 +504,10 @@ section.gallery {
     padding-bottom: min(1.5rem, 15px);
 }
 
+.year > .resize {
+    padding: 0 min(10rem, 100px);
+}
+
 .year > div > div > em {
     font-size: min(1.8rem, 18px);
     width: 100%;
@@ -540,7 +544,7 @@ section.gallery {
     margin: 0 10px;
 }
 
-/* <!-- Default Marquee --> */
+
 .marquee {
     height: 100%;
     width: 100%;
@@ -565,7 +569,6 @@ section.gallery {
     white-space: nowrap;
 }
 
-/* <!-- Marquees --> */
 
 .portfolio-marquee {
     max-height: min(11rem, 110px);
@@ -618,7 +621,7 @@ section.gallery {
     display: flex;
 }
 
-/* <!-- Progress Bar --> */
+
 .progress-bar {
     position: fixed;
     top: 0;
@@ -634,7 +637,7 @@ section.gallery {
     background-color: var(--color-dark-green);
 }
 
-/* <!-- Float Button --> */
+
 .float_button {
     top: 15px;
     right: 15px;
@@ -656,7 +659,7 @@ section.gallery {
     background-color: transparent;
 }
 
-/* <!-- Side Menu --> */
+
 .sidebar {
     top: 0;
     right: 0;
@@ -731,7 +734,7 @@ section.gallery {
     position: absolute;
 }
 
-/* <!-- Image Preview --> */
+
 .image-preview {
     z-index: 10000000;
     position: fixed;
@@ -850,7 +853,7 @@ section.gallery {
     left: auto;
 }
 
-/* <!-- Globals --> */
+
 .scroll-lock {
     height: 100vh;
     width: 100vw;
