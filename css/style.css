@@ -361,8 +361,8 @@ section.gallery {
 
 .free-space {
     height: 100%;
-    max-height: min(70rem, 700px);
-    background-image: url('../assets/block-5_2.jpg');
+    max-height: min(60rem, 600px);
+    background-image: url('../assets/block-5_1.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -861,10 +861,6 @@ section.gallery {
 }
 
 @media (max-width: 960px) {
-    .free-space {
-        display: none;
-    }
-
     .sidebar .menu {
         width: 100vw;
     }
